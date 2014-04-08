@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="z3c.formwidget.multiunit">
+
+  <class class=".widget.MultiUnitWidget">
+    <require
+        permission="zope.Public"
+        interface=".interfaces.IMultiUnitWidget"
+        />
+  </class>
+
+  <!-- This widget is not configured for any field by default. -->
+  <z3c:widgetTemplate
+      layer="z3c.form.interfaces.IFormLayer"
+      mode="display"
+      template="multiunit_display.pt"
+      widget=".interfaces.IMultiUnitWidget"
+      />
+
+  <z3c:widgetTemplate
+      layer="z3c.form.interfaces.IFormLayer"
+      mode="input"
+      template="multiunit_input.pt"
+      widget=".interfaces.IMultiUnitWidget"
+      />
+
+</configure>
