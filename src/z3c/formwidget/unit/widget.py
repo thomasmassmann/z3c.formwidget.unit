@@ -102,7 +102,7 @@ class MultiUnitWidget(TextWidget):
     unit = None
 
     unit_systems = (SYSTEM_METRIC, SYSTEM_IMPERIAL)
-    unit_dimension = DIMENSION_AREA
+    unit_dimension = DIMENSION_LENGTH
     preferred_system = SYSTEM_METRIC
 
     data_header = _(u'Select a unit')
