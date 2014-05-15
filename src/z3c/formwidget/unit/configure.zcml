@@ -14,14 +14,14 @@
   <z3c:widgetTemplate
       layer="z3c.form.interfaces.IFormLayer"
       mode="display"
-      template="display.pt"
+      template="templates/display.pt"
       widget=".interfaces.IMultiUnitWidget"
       />
 
   <z3c:widgetTemplate
       layer="z3c.form.interfaces.IFormLayer"
       mode="input"
-      template="input.pt"
+      template="templates/input.pt"
       widget=".interfaces.IMultiUnitWidget"
       />
 
