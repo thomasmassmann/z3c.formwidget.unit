@@ -14,7 +14,7 @@ long_description = (
     read('CHANGES.rst'))
 
 setup(
-    name='z3c.formwidget.multiunit',
+    name='z3c.formwidget.unit',
     version=version,
     description="A multi unit widget for z3c.form.",
     long_description=long_description,
@@ -32,8 +32,8 @@ setup(
     keywords='zope zope3 z3c.form',
     author='Thomas Massmann',
     author_email='thomas.massmann@it-spir.it',
-    url='https://github.com/tmassman/z3c.formwidget.multiunit',
-    download_url='http://pypi.python.org/pypi/z3c.formwidget.multiunit',
+    url='https://github.com/tmassman/z3c.formwidget.unit',
+    download_url='http://pypi.python.org/pypi/z3c.formwidget.unit',
     license='GPL',
     packages=find_packages('src'),
     package_dir={'': 'src'},

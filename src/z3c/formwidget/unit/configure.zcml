@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:z3c="http://namespaces.zope.org/z3c"
-    i18n_domain="z3c.formwidget.multiunit">
+    i18n_domain="z3c.formwidget.unit">
 
   <class class=".widget.MultiUnitWidget">
     <require

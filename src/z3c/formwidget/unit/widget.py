@@ -28,9 +28,9 @@ from zope.interface import (
 from zope.schema.interfaces import ITextLine
 
 # local imports
-from z3c.formwidget.multiunit import ureg
-from z3c.formwidget.multiunit.i18n import _
-from z3c.formwidget.multiunit.interfaces import IMultiUnitWidget
+from z3c.formwidget.unit import ureg
+from z3c.formwidget.unit.i18n import _
+from z3c.formwidget.unit.interfaces import IMultiUnitWidget
 
 SYSTEM_METRIC = 'metric'
 SYSTEM_IMPERIAL = 'imperial'
