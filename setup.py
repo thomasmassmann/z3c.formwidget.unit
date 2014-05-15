@@ -42,6 +42,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
+        'pint',
     ],
     entry_points="""
     # -*- Entry points: -*-
