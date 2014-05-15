@@ -114,10 +114,8 @@ jQuery(function(jq){
 });
     """
 
-    def render(self):
-        if HAS_BS_SELECT:
-            bootstrap_select.need()
-
+    @property
+    def widget_value(self):
         self.unit = self.request.get(self.name + '-unit', self.preferred_unit)
 
         try:
@@ -133,8 +131,11 @@ jQuery(function(jq){
             value = value * base_unit
             value = value.to(unit).magnitude
             value = converter.toWidgetValue(value)
-        self.value = value
+        return value
 
+    def render(self):
+        if HAS_BS_SELECT:
+            bootstrap_select.need()
         return super(MultiUnitWidget, self).render()
 
     def get_best_unit(self, value):

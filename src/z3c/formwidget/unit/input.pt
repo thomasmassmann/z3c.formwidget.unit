@@ -21,7 +21,7 @@
                         onkeypress view/onkeypress;
                         onkeydown view/onkeydown;
                         onkeyup view/onkeyup;
-                        value view/value;
+                        value view/widget_value;
                         disabled view/disabled;
                         tabindex view/tabindex;
                         onfocus view/onfocus;
