@@ -1,5 +1,5 @@
 squaremeter = 1 * m**2 = sq_m
 hectare = 10000 * m**2 = ha
 squarekilometer = 1000000 * m**2 = sq_km
-squarefoot = 0.092903 * m**2 = sq_ft = squarefeet
+squarefoot = 0.09290341 * m**2 = sq_ft = squarefeet
 squaremile = 2589988.110336 * m**2 = sq_mi
