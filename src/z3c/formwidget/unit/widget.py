@@ -30,7 +30,7 @@ from zope.schema.interfaces import ITextLine
 # local imports
 from z3c.formwidget.unit import ureg
 from z3c.formwidget.unit.i18n import _
-from z3c.formwidget.unit.interfaces import IMultiUnitWidget
+from z3c.formwidget.unit import interfaces
 
 SYSTEM_METRIC = 'metric'
 SYSTEM_IMPERIAL = 'imperial'
@@ -95,14 +95,13 @@ BASE_UNITS = {
 
 class MultiUnitWidget(TextWidget):
     """Multi Unit Widget based on TextWidget."""
-    implementsOnly(IMultiUnitWidget)
+    implementsOnly(interfaces.IUnitWidget)
 
     klass = u'multiunit-widget'
     value = u''
     unit = None
 
     unit_systems = (SYSTEM_METRIC, SYSTEM_IMPERIAL)
-    unit_dimension = DIMENSION_LENGTH
     preferred_system = SYSTEM_METRIC
 
     data_header = _(u'Select a unit')
@@ -113,6 +112,10 @@ jQuery(function(jq){
     jq('#${id}-unit').selectpicker({});
 });
     """
+
+    @property
+    def unit_dimension(self):
+        raise NotImplementedError
 
     @property
     def widget_value(self):
@@ -220,8 +223,35 @@ jQuery(function(jq){
         return items
 
 
+class AreaWidget(MultiUnitWidget):
+    """Unit widget for 'area' dimensions."""
+    implementsOnly(interfaces.IAreaWidget)
+    klass = u'area-widget unit-widget'
+
+    @property
+    def unit_dimension(self):
+        return DIMENSION_AREA
+
+
 @adapter(ITextLine, IFormLayer)
 @implementer(IFieldWidget)
-def MultiUnitFieldWidget(field, request):
-    """Factory for MultiUnitWidget"""
-    return FieldWidget(field, MultiUnitWidget(request))
+def AreaFieldWidget(field, request):
+    """Factory for AreaWidget"""
+    return FieldWidget(field, AreaWidget(request))
+
+
+class LengthWidget(MultiUnitWidget):
+    """Unit widget for 'length' dimensions."""
+    implementsOnly(interfaces.ILengthWidget)
+    klass = u'length-widget unit-widget'
+
+    @property
+    def unit_dimension(self):
+        return DIMENSION_LENGTH
+
+
+@adapter(ITextLine, IFormLayer)
+@implementer(IFieldWidget)
+def LengthFieldWidget(field, request):
+    """Factory for LengthWidget"""
+    return FieldWidget(field, LengthWidget(request))

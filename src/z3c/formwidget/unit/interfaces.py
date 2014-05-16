@@ -4,5 +4,13 @@
 from z3c.form.interfaces import ITextWidget
 
 
-class IMultiUnitWidget(ITextWidget):
-    """Multi Unit Widget."""
+class IUnitWidget(ITextWidget):
+    """Base unit widget."""
+
+
+class ILengthWidget(IUnitWidget):
+    """Unit widget for 'lenght' dimensions."""
+
+
+class IAreaWidget(IUnitWidget):
+    """Unit widget for 'area' dimensions."""
