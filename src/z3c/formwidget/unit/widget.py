@@ -107,6 +107,8 @@ class MultiUnitWidget(TextWidget):
 
     unit_systems = (SYSTEM_METRIC, SYSTEM_IMPERIAL)
     preferred_system = SYSTEM_METRIC
+    level_min = 0
+    level_max = None
 
     data_header = _(u'Select a unit')
     data_width = '75px'
@@ -126,7 +128,6 @@ jQuery(function(jq){
         self.unit = self.request.get(self.name + '-unit', self.preferred_unit)
 
         try:
-            # unit = getattr(ureg, self.unit)
             base_unit = getattr(ureg, self.base_unit)
         except UndefinedUnitError:
             value = self.value
@@ -148,15 +149,20 @@ jQuery(function(jq){
     def get_best_unit(self, value):
         level = 0
         if self.unit_dimension == DIMENSION_AREA:
+            level = 2
             if value < 1000:
                 level = 0
             elif value <= 1000000:
                 level = 1
-            else:
-                level = 2
         elif self.unit_dimension == DIMENSION_LENGTH:
-            if value > 400:
-                level = 1
+            level = 2
+            if value < 0.5:
+                level = 0
+            elif value > 400:
+                level = 3
+        level = max(self.level_min, level)
+        if self.level_max:
+            level = min(self.level_max, level)
         self.unit = UNITS.get(
             self.preferred_system,
             {}).get(self.unit_dimension, [(None,)])[level][0]
@@ -206,6 +212,8 @@ jQuery(function(jq){
                 continue
             units = []
             available_units = dimensions.get(self.unit_dimension, [])
+            level_max = self.level_max + 1 if self.level_max else None
+            available_units = available_units[self.level_min:level_max]
             for unit in available_units:
                 abbr, label_short, label, info = unit
                 if abbr is None:
