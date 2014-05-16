@@ -81,12 +81,15 @@ jQuery(function(jq){
         else:
             # Do the conversion
             converter = IDataConverter(self)
-            value = converter.toFieldValue(self.value)
+            try:
+                value = converter.toFieldValue(self.value)
+            except:
+                return self.value
             system = None
             if not self.ignoreContext:
                 system = self._get_unit_annotation()
-                if not system in self.unit_systems:
-                    system = self.preferred_system
+            if not system in self.unit_systems:
+                system = self.preferred_system
             self.unit = utils.get_best_unit(
                 value,
                 system,
@@ -107,22 +110,30 @@ jQuery(function(jq){
 
     def extract(self, default=NO_VALUE):
         value = self.request.get(self.name, default)
+        converter = IDataConverter(self)
+        try:
+            c_value = converter.toFieldValue(value)
+        except:
+            return value
+
         unit_name = self.request.get(self.name + '-unit')
         if unit_name and unit_name != self.base_unit:
             try:
                 unit = getattr(ureg, unit_name)
                 base_unit = getattr(ureg, self.base_unit)
             except UndefinedUnitError:
-                value = self.field.get(self.context)
+                c_value = self.field.get(self.context)
+
+            # Do the conversion
+            try:
+                c_value = c_value * unit
+            except TypeError:
+                return value
             else:
-                # Do the conversion
-                converter = IDataConverter(self)
-                value = converter.toFieldValue(value)
-                value = value * unit
-                value = value.to(base_unit).magnitude
-                if not self.ignoreContext:
-                    self._set_unit_annotation(unit_name)
-            value = converter.toWidgetValue(value)
+                c_value = c_value.to(base_unit).magnitude
+            if not self.ignoreContext:
+                self._set_unit_annotation(unit_name)
+            value = converter.toWidgetValue(c_value)
 
         return value
 
