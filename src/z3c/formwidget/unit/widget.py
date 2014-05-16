@@ -38,6 +38,8 @@ SYSTEM_IMPERIAL = 'imperial'
 DIMENSION_AREA = 'area'
 DIMENSION_LENGTH = 'length'
 
+UNIT_NONE = (None, None, None, None)
+
 # Metric length units.
 UNIT_MM = ('mm', u'mm', _(u'milimeter'), _(u'0.1 cm'))
 UNIT_CM = ('cm', u'cm', _(u'centimeter'), _(u'0.01 m'))
@@ -68,27 +70,28 @@ LABELS = {
 UNITS = {
     SYSTEM_METRIC: {
         DIMENSION_AREA: [
-            UNIT_SQM,
-            UNIT_HA,
-            UNIT_SQKM,
+            UNIT_SQM,  # level 0
+            UNIT_HA,  # level 1
+            UNIT_SQKM,  # level 2
         ],
         DIMENSION_LENGTH: [
-            UNIT_MM,
-            UNIT_CM,
-            UNIT_M,
-            UNIT_KM,
+            UNIT_MM,  # level 0
+            UNIT_CM,  # level 1
+            UNIT_M,  # level 2
+            UNIT_KM,  # level 3
         ],
     },
     SYSTEM_IMPERIAL: {
         DIMENSION_AREA: [
-            UNIT_SQFT,
-            UNIT_ACRE,
-            UNIT_SQMI,
+            UNIT_SQFT,  # level 0
+            UNIT_ACRE,  # level 1
+            UNIT_SQMI,  # level 2
         ],
         DIMENSION_LENGTH: [
-            UNIT_IN,
-            UNIT_FT,
-            UNIT_MI,
+            UNIT_NONE,  # level 0 (placeholder)
+            UNIT_IN,  # level 1
+            UNIT_FT,  # level 2
+            UNIT_MI,  # level 3
         ],
     },
 }
@@ -210,6 +213,9 @@ jQuery(function(jq){
             available_units = dimensions.get(self.unit_dimension, [])
             for unit in available_units:
                 abbr, label_short, label, info = unit
+                if abbr is None:
+                    # We have a 'level' placeholder.
+                    continue
                 subtext = label
                 if info:
                     subtext = subtext + ' (%s)' % info
