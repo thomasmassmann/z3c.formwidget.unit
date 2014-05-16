@@ -59,7 +59,9 @@ class MultiUnitWidget(TextWidget):
 
     _javascript_input = """
 jQuery(function(jq){
+  if (jQuery().selectpicker) {
     jq('#${id}-unit').selectpicker({});
+  }
 });
     """
 
