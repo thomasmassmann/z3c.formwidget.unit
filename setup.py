@@ -40,6 +40,11 @@ setup(
     namespace_packages=['z3c', 'z3c.formwidget'],
     zip_safe=False,
     include_package_data=True,
+    extras_require={
+        'fanstatic': [
+            'js.bootstrap_select',
+        ]
+    },
     install_requires=[
         'setuptools',
         'pint',
