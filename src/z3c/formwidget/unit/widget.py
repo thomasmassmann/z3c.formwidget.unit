@@ -96,11 +96,6 @@ UNITS = {
     },
 }
 
-BASE_UNITS = {
-    DIMENSION_AREA: UNIT_SQM,
-    DIMENSION_LENGTH: UNIT_M,
-}
-
 
 class MultiUnitWidget(TextWidget):
     """Multi Unit Widget based on TextWidget."""
@@ -195,7 +190,7 @@ jQuery(function(jq){
 
     @property
     def base_unit(self):
-        return BASE_UNITS.get(self.unit_dimension)[0]
+        raise NotImplementedError
 
     @property
     def preferred_unit(self):
@@ -244,6 +239,10 @@ class AreaWidget(MultiUnitWidget):
     def unit_dimension(self):
         return DIMENSION_AREA
 
+    @property
+    def base_unit(self):
+        return UNIT_SQM[0]
+
 
 @adapter(ITextLine, IFormLayer)
 @implementer(IFieldWidget)
@@ -260,6 +259,10 @@ class LengthWidget(MultiUnitWidget):
     @property
     def unit_dimension(self):
         return DIMENSION_LENGTH
+
+    @property
+    def base_unit(self):
+        return UNIT_M[0]
 
 
 @adapter(ITextLine, IFormLayer)
