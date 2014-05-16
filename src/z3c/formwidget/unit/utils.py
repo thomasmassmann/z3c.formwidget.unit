@@ -21,7 +21,7 @@ def get_best_unit(value, system, dimension, level_min=0, level_max=None):
         elif value > 400:
             level = 3
     level = max(level_min, level)
-    if level_max:
+    if level_max is not None:
         level = min(level_max, level)
     unit = interfaces.UNITS.get(
         system,

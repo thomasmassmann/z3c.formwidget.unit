@@ -171,13 +171,13 @@ jQuery(function(jq){
                 continue
             units = []
             available_units = dimensions.get(self.unit_dimension, [])
-            level_max = self.level_max + 1 if self.level_max else None
+            if self.level_max is not None:
+                level_max = self.level_max + 1
+            else:
+                level_max = None
             available_units = available_units[self.level_min:level_max]
             for unit in available_units:
                 abbr, label_short, label, info = unit
-                if abbr is None:
-                    # We have a 'level' placeholder.
-                    continue
                 subtext = label
                 if info:
                     subtext = subtext + ' (%s)' % info

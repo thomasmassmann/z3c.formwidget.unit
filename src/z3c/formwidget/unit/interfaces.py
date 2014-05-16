@@ -16,8 +16,7 @@ DIMENSION_LENGTH = 'length'
 UNIT_NONE = (None, None, None, None)
 
 # Metric length units.
-UNIT_MM = ('mm', u'mm', _(u'milimeter'), _(u'0.1 cm'))
-UNIT_CM = ('cm', u'cm', _(u'centimeter'), _(u'0.01 m'))
+UNIT_MM = ('mm', u'mm', _(u'milimeter'), _(u'0.001 m'))
 UNIT_M = ('m', u'm', _(u'meter'), None)
 UNIT_KM = ('km', u'km', _(u'kilometer'), _(u'1,000 m'))
 
@@ -51,9 +50,8 @@ UNITS = {
         ],
         DIMENSION_LENGTH: [
             UNIT_MM,  # level 0
-            UNIT_CM,  # level 1
-            UNIT_M,  # level 2
-            UNIT_KM,  # level 3
+            UNIT_M,  # level 1
+            UNIT_KM,  # level 2
         ],
     },
     SYSTEM_IMPERIAL: {
@@ -63,17 +61,15 @@ UNITS = {
             UNIT_SQMI,  # level 2
         ],
         DIMENSION_LENGTH: [
-            UNIT_NONE,  # level 0 (placeholder)
-            UNIT_IN,  # level 1
-            UNIT_FT,  # level 2
-            UNIT_MI,  # level 3
+            UNIT_IN,  # level 0
+            UNIT_FT,  # level 1
+            UNIT_MI,  # level 2
         ],
     },
 }
 
 METRICS = [
     UNIT_MM[0],
-    UNIT_CM[0],
     UNIT_M[0],
     UNIT_KM[0],
     UNIT_SQM[0],
