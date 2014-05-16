@@ -27,3 +27,10 @@ def get_best_unit(value, system, dimension, level_min=0, level_max=None):
         system,
         {}).get(dimension, [(None,)])[level][0]
     return unit
+
+
+def system_for_unit(unit_name):
+    if unit_name in interfaces.METRICS:
+        return interfaces.SYSTEM_METRIC
+    elif unit_name in interfaces.IMPERIALS:
+        return interfaces.SYSTEM_IMPERIAL

@@ -71,6 +71,25 @@ UNITS = {
     },
 }
 
+METRICS = [
+    UNIT_MM[0],
+    UNIT_CM[0],
+    UNIT_M[0],
+    UNIT_KM[0],
+    UNIT_SQM[0],
+    UNIT_HA[0],
+    UNIT_SQKM[0],
+]
+
+IMPERIALS = [
+    UNIT_IN[0],
+    UNIT_FT[0],
+    UNIT_MI[0],
+    UNIT_SQFT[0],
+    UNIT_ACRE[0],
+    UNIT_SQMI[0],
+]
+
 
 class IUnitWidget(ITextWidget):
     """Base unit widget."""

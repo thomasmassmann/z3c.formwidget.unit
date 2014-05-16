@@ -12,6 +12,7 @@ except ImportError:
     HAS_BS_SELECT = False
 
 # zope imports
+from persistent.dict import PersistentDict
 from z3c.form.widget import FieldWidget
 from z3c.form.browser.text import TextWidget
 from z3c.form.interfaces import (
@@ -20,7 +21,9 @@ from z3c.form.interfaces import (
     IFormLayer,
     NO_VALUE,
 )
+from zope.annotation.interfaces import IAnnotations
 from zope.component import adapter
+from zope.security.proxy import Proxy, removeSecurityProxy
 from zope.interface import (
     implementer,
     implementsOnly,
@@ -30,6 +33,9 @@ from zope.schema.interfaces import ITextLine
 # local imports
 from z3c.formwidget.unit import interfaces, ureg, utils
 from z3c.formwidget.unit.i18n import _
+
+
+KEY = 'z3c.formwidget.unit'
 
 
 class MultiUnitWidget(TextWidget):
@@ -76,9 +82,14 @@ jQuery(function(jq){
             # Do the conversion
             converter = IDataConverter(self)
             value = converter.toFieldValue(self.value)
+            system = None
+            if not self.ignoreContext:
+                system = self._get_unit_annotation()
+                if not system in self.unit_systems:
+                    system = self.preferred_system
             self.unit = utils.get_best_unit(
                 value,
-                self.preferred_system,
+                system,
                 self.unit_dimension,
                 level_min=self.level_min,
                 level_max=self.level_max,
@@ -96,8 +107,8 @@ jQuery(function(jq){
 
     def extract(self, default=NO_VALUE):
         value = self.request.get(self.name, default)
-        unit_name = self.request.get(self.name + '-unit', self.base_unit)
-        if unit_name != self.base_unit:
+        unit_name = self.request.get(self.name + '-unit')
+        if unit_name and unit_name != self.base_unit:
             try:
                 unit = getattr(ureg, unit_name)
                 base_unit = getattr(ureg, self.base_unit)
@@ -109,8 +120,30 @@ jQuery(function(jq){
                 value = converter.toFieldValue(value)
                 value = value * unit
                 value = value.to(base_unit).magnitude
+                if not self.ignoreContext:
+                    self._set_unit_annotation(unit_name)
             value = converter.toWidgetValue(value)
+
         return value
+
+    def _get_unit_annotation(self):
+        context = self.context
+        if isinstance(context, Proxy):
+            context = removeSecurityProxy(context)
+        annotations = IAnnotations(context)
+        storage = annotations.get(KEY, {})
+        return storage.get(self.name)
+
+    def _set_unit_annotation(self, unit):
+        context = self.context
+        if isinstance(context, Proxy):
+            context = removeSecurityProxy(context)
+        annotations = IAnnotations(context)
+        storage = annotations.get(KEY)
+        if storage is None:
+            storage = annotations[KEY] = PersistentDict({})
+        # Store the unit system
+        storage[self.name] = utils.system_for_unit(unit)
 
     def javascript_input(self):
         return string.Template(self._javascript_input).substitute(dict(
