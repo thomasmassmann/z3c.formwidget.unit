@@ -3,6 +3,74 @@
 # zope imports
 from z3c.form.interfaces import ITextWidget
 
+# local imports
+from z3c.formwidget.unit.i18n import _
+
+
+SYSTEM_METRIC = 'metric'
+SYSTEM_IMPERIAL = 'imperial'
+
+DIMENSION_AREA = 'area'
+DIMENSION_LENGTH = 'length'
+
+UNIT_NONE = (None, None, None, None)
+
+# Metric length units.
+UNIT_MM = ('mm', u'mm', _(u'milimeter'), _(u'0.1 cm'))
+UNIT_CM = ('cm', u'cm', _(u'centimeter'), _(u'0.01 m'))
+UNIT_M = ('m', u'm', _(u'meter'), None)
+UNIT_KM = ('km', u'km', _(u'kilometer'), _(u'1,000 m'))
+
+# Metric area units.
+UNIT_SQM = ('sq_m', u'm²', _(u'square meter'), None)
+UNIT_HA = ('ha', u'ha', _(u'hectare'), _(u'10,000 m²'))
+UNIT_SQKM = ('sq_km', u'km²', _(u'square kilometer'), _(u'100 ha'))
+
+# Imperial length units.
+UNIT_IN = ('in', u'in', _(u'inch'), _(u'1/12 foot'))
+UNIT_FT = ('ft', u'ft', _(u'foot'), None)
+UNIT_YD = ('yd', u'yd', _(u'yard'), _(u'3 feet'))
+UNIT_MI = ('mi', u'mi', _(u'mile'), _(u'1,760 yards'))
+
+# Imperial area units.
+UNIT_SQFT = ('sq_ft', u'sq ft', _(u'square feet'), None)
+UNIT_ACRE = ('acre', u'acre', _(u'acre'), _(u'43,560 sq ft'))
+UNIT_SQMI = ('sq_mi', u'sq mi', _(u'square mile'), _(u'640 acres'))
+
+LABELS = {
+    SYSTEM_METRIC: _(u'Metric'),
+    SYSTEM_IMPERIAL: _(u'Imperial'),
+}
+
+UNITS = {
+    SYSTEM_METRIC: {
+        DIMENSION_AREA: [
+            UNIT_SQM,  # level 0
+            UNIT_HA,  # level 1
+            UNIT_SQKM,  # level 2
+        ],
+        DIMENSION_LENGTH: [
+            UNIT_MM,  # level 0
+            UNIT_CM,  # level 1
+            UNIT_M,  # level 2
+            UNIT_KM,  # level 3
+        ],
+    },
+    SYSTEM_IMPERIAL: {
+        DIMENSION_AREA: [
+            UNIT_SQFT,  # level 0
+            UNIT_ACRE,  # level 1
+            UNIT_SQMI,  # level 2
+        ],
+        DIMENSION_LENGTH: [
+            UNIT_NONE,  # level 0 (placeholder)
+            UNIT_IN,  # level 1
+            UNIT_FT,  # level 2
+            UNIT_MI,  # level 3
+        ],
+    },
+}
+
 
 class IUnitWidget(ITextWidget):
     """Base unit widget."""
