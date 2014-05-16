@@ -39,8 +39,10 @@ DIMENSION_AREA = 'area'
 DIMENSION_LENGTH = 'length'
 
 # Metric length units.
+UNIT_MM = ('mm', u'mm', _(u'milimeter'), _(u'0.1 cm'))
+UNIT_CM = ('cm', u'cm', _(u'centimeter'), _(u'0.01 m'))
 UNIT_M = ('m', u'm', _(u'meter'), None)
-UNIT_KM = ('km', u'km', _(u'kilometer'), _(u'1,000 meter'))
+UNIT_KM = ('km', u'km', _(u'kilometer'), _(u'1,000 m'))
 
 # Metric area units.
 UNIT_SQM = ('sq_m', u'm²', _(u'square meter'), None)
@@ -48,6 +50,7 @@ UNIT_HA = ('ha', u'ha', _(u'hectare'), _(u'10,000 m²'))
 UNIT_SQKM = ('sq_km', u'km²', _(u'square kilometer'), _(u'100 ha'))
 
 # Imperial length units.
+UNIT_IN = ('in', u'in', _(u'inch'), _(u'1/12 foot'))
 UNIT_FT = ('ft', u'ft', _(u'foot'), None)
 UNIT_YD = ('yd', u'yd', _(u'yard'), _(u'3 feet'))
 UNIT_MI = ('mi', u'mi', _(u'mile'), _(u'1,760 yards'))
@@ -70,6 +73,8 @@ UNITS = {
             UNIT_SQKM,
         ],
         DIMENSION_LENGTH: [
+            UNIT_MM,
+            UNIT_CM,
             UNIT_M,
             UNIT_KM,
         ],
@@ -81,6 +86,7 @@ UNITS = {
             UNIT_SQMI,
         ],
         DIMENSION_LENGTH: [
+            UNIT_IN,
             UNIT_FT,
             UNIT_MI,
         ],
