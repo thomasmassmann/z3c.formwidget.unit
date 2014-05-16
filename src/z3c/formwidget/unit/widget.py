@@ -126,6 +126,8 @@ jQuery(function(jq){
     @property
     def widget_value(self):
         self.unit = self.request.get(self.name + '-unit', self.preferred_unit)
+        if not self.value:
+            return
 
         try:
             base_unit = getattr(ureg, self.base_unit)
