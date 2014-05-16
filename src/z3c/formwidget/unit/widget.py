@@ -28,9 +28,8 @@ from zope.interface import (
 from zope.schema.interfaces import ITextLine
 
 # local imports
-from z3c.formwidget.unit import ureg
+from z3c.formwidget.unit import interfaces, ureg, utils
 from z3c.formwidget.unit.i18n import _
-from z3c.formwidget.unit import interfaces
 
 
 class MultiUnitWidget(TextWidget):
@@ -64,6 +63,7 @@ jQuery(function(jq){
 
     @property
     def widget_value(self):
+        """Return the converted value."""
         self.unit = self.request.get(self.name + '-unit', self.preferred_unit)
         if not self.value:
             return
@@ -76,7 +76,14 @@ jQuery(function(jq){
             # Do the conversion
             converter = IDataConverter(self)
             value = converter.toFieldValue(self.value)
-            unit = self.get_best_unit(value)
+            self.unit = utils.get_best_unit(
+                value,
+                self.preferred_system,
+                self.unit_dimension,
+                level_min=self.level_min,
+                level_max=self.level_max,
+            )
+            unit = getattr(ureg, self.unit)
             value = value * base_unit
             value = value.to(unit).magnitude
             value = converter.toWidgetValue(value)
@@ -86,28 +93,6 @@ jQuery(function(jq){
         if HAS_BS_SELECT:
             bootstrap_select.need()
         return super(MultiUnitWidget, self).render()
-
-    def get_best_unit(self, value):
-        level = 0
-        if self.unit_dimension == interfaces.DIMENSION_AREA:
-            level = 2
-            if value < 1000:
-                level = 0
-            elif value <= 1000000:
-                level = 1
-        elif self.unit_dimension == interfaces.DIMENSION_LENGTH:
-            level = 2
-            if value < 0.5:
-                level = 0
-            elif value > 400:
-                level = 3
-        level = max(self.level_min, level)
-        if self.level_max:
-            level = min(self.level_max, level)
-        self.unit = interfaces.UNITS.get(
-            self.preferred_system,
-            {}).get(self.unit_dimension, [(None,)])[level][0]
-        return getattr(ureg, self.unit)
 
     def extract(self, default=NO_VALUE):
         value = self.request.get(self.name, default)
