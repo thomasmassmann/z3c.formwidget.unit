@@ -45,7 +45,7 @@ setup(
             'js.bootstrap_select',
         ],
         test=[
-            'z3c.form',
+            'z3c.form [test]',
             'zope.browserpage',
             'zope.publisher',
             'zope.testing',

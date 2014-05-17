@@ -1,0 +1,136 @@
+===========
+Area Widget
+===========
+
+Note: the area widget isn't registered for a field by default. You can use
+the ``widgetFactory`` argument of a ``IField`` object if you construct fields
+or set the custom widget factory on selected fields later.
+
+The ``AreaWidget`` widget renders a text input type field e.g.  <input
+type="text" />
+
+    >>> from zope.interface.verify import verifyClass
+    >>> from z3c.form import interfaces
+    >>> from z3c.formwidget.unit.widget import AreaWidget
+
+The ``AreaWidget`` is a widget:
+
+    >>> verifyClass(interfaces.IWidget, AreaWidget)
+    True
+
+The widget can render a input field only by adapting a request:
+
+    >>> from z3c.form.testing import TestRequest
+    >>> request = TestRequest()
+    >>> widget = AreaWidget(request)
+
+Set a name and id for the widget:
+
+    >>> widget.id = 'widget-id'
+    >>> widget.name = 'widget.name'
+
+Such a field provides IWidget:
+
+    >>> interfaces.IWidget.providedBy(widget)
+    True
+
+We also need to register the template for at least the widget and request:
+
+    >>> import os.path
+    >>> import zope.interface
+    >>> from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+    >>> from zope.pagetemplate.interfaces import IPageTemplate
+    >>> import z3c.form.browser
+    >>> import z3c.form.widget
+    >>> template = os.path.join(os.path.dirname(z3c.formwidget.unit.__file__),
+    ...     'templates', 'input.pt')
+    >>> factory = z3c.form.widget.WidgetTemplateFactory(template)
+    >>> zope.component.provideAdapter(factory,
+    ...     (zope.interface.Interface, IDefaultBrowserLayer, None, None, None),
+    ...     IPageTemplate, name='input')
+
+If we render the widget we get the input element with the select box and some JS code:
+
+    >>> print(widget.render())  # doctest:+ELLIPSIS
+    <div class="input-append">
+        <input id="widget-id" name="widget.name" class="area-widget unit-widget" type="text" />
+        <select class="selectpicker show-tick" id="widget-id-unit" title="" data-header="Select a unit" data-width="75px" name="widget.name-unit">
+        ...
+        </select>
+    </div>
+    <script type="text/javascript">
+        jQuery(function(jq){
+          if (jQuery().selectpicker) {
+            jq('#widget-id-unit').selectpicker({});
+          }
+        });
+    </script>
+
+
+=============
+Length Widget
+=============
+
+Note: the length widget isn't registered for a field by default. You can use
+the ``widgetFactory`` argument of a ``IField`` object if you construct fields
+or set the custom widget factory on selected fields later.
+
+The ``LengthWidget`` widget renders a text input type field e.g.  <input
+type="text" />
+
+    >>> from zope.interface.verify import verifyClass
+    >>> from z3c.form import interfaces
+    >>> from z3c.formwidget.unit.widget import LengthWidget
+
+The ``LengthWidget`` is a widget:
+
+    >>> verifyClass(interfaces.IWidget, LengthWidget)
+    True
+
+The widget can render a input field only by adapting a request:
+
+    >>> from z3c.form.testing import TestRequest
+    >>> request = TestRequest()
+    >>> widget = LengthWidget(request)
+
+Set a name and id for the widget:
+
+    >>> widget.id = 'widget-id'
+    >>> widget.name = 'widget.name'
+
+Such a field provides IWidget:
+
+    >>> interfaces.IWidget.providedBy(widget)
+    True
+
+We also need to register the template for at least the widget and request:
+
+    >>> import os.path
+    >>> import zope.interface
+    >>> from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+    >>> from zope.pagetemplate.interfaces import IPageTemplate
+    >>> import z3c.form.browser
+    >>> import z3c.form.widget
+    >>> template = os.path.join(os.path.dirname(z3c.formwidget.unit.__file__),
+    ...     'templates', 'input.pt')
+    >>> factory = z3c.form.widget.WidgetTemplateFactory(template)
+    >>> zope.component.provideAdapter(factory,
+    ...     (zope.interface.Interface, IDefaultBrowserLayer, None, None, None),
+    ...     IPageTemplate, name='input')
+
+If we render the widget we get the input element with the select box and some JS code:
+
+    >>> print(widget.render())  # doctest:+ELLIPSIS
+    <div class="input-append">
+        <input id="widget-id" name="widget.name" class="length-widget unit-widget" type="text" />
+        <select class="selectpicker show-tick" id="widget-id-unit" title="" data-header="Select a unit" data-width="75px" name="widget.name-unit">
+        ...
+        </select>
+    </div>
+    <script type="text/javascript">
+        jQuery(function(jq){
+          if (jQuery().selectpicker) {
+            jq('#widget-id-unit').selectpicker({});
+          }
+        });
+    </script>
