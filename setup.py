@@ -52,4 +52,8 @@ setup(
     entry_points="""
     # -*- Entry points: -*-
     """,
+    message_extractors={"src": [
+        ('**.py', 'lingua_python', None),
+        ('**.pt', 'lingua_xml', None),
+    ]},
 )

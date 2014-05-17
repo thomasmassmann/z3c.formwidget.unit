@@ -16,14 +16,14 @@ DIMENSION_LENGTH = 'length'
 UNIT_NONE = (None, None, None, None)
 
 # Metric length units.
-UNIT_MM = ('mm', u'mm', _(u'milimeter'), _(u'0.001 m'))
+UNIT_MM = ('mm', u'mm', _(u'millimeter'), _(u'0.001 meter'))
 UNIT_M = ('m', u'm', _(u'meter'), None)
-UNIT_KM = ('km', u'km', _(u'kilometer'), _(u'1,000 m'))
+UNIT_KM = ('km', u'km', _(u'kilometer'), _(u'1,000 meter'))
 
 # Metric area units.
 UNIT_SQM = ('sq_m', u'm²', _(u'square meter'), None)
-UNIT_HA = ('ha', u'ha', _(u'hectare'), _(u'10,000 m²'))
-UNIT_SQKM = ('sq_km', u'km²', _(u'square kilometer'), _(u'100 ha'))
+UNIT_HA = ('ha', u'ha', _(u'hectare'), _(u'10,000 square meter'))
+UNIT_SQKM = ('sq_km', u'km²', _(u'square kilometer'), _(u'100 hectare'))
 
 # Imperial length units.
 UNIT_IN = ('in', u'in', _(u'inch'), _(u'1/12 foot'))
@@ -33,7 +33,7 @@ UNIT_MI = ('mi', u'mi', _(u'mile'), _(u'1,760 yards'))
 
 # Imperial area units.
 UNIT_SQFT = ('sq_ft', u'sq ft', _(u'square feet'), None)
-UNIT_ACRE = ('acre', u'acre', _(u'acre'), _(u'43,560 sq ft'))
+UNIT_ACRE = ('acre', u'acre', _(u'acre'), _(u'43,560 square feet'))
 UNIT_SQMI = ('sq_mi', u'sq mi', _(u'square mile'), _(u'640 acres'))
 
 LABELS = {

@@ -23,6 +23,7 @@ from z3c.form.interfaces import (
 )
 from zope.annotation.interfaces import IAnnotations
 from zope.component import adapter
+from zope.i18n import translate
 from zope.security.proxy import Proxy, removeSecurityProxy
 from zope.interface import (
     implementer,
@@ -191,8 +192,9 @@ jQuery(function(jq){
             available_units = available_units[self.level_min:level_max]
             for unit in available_units:
                 abbr, label_short, label, info = unit
-                subtext = label
+                subtext = translate(label, context=self.request)
                 if info:
+                    info = translate(info, context=self.request)
                     subtext = subtext + ' (%s)' % info
                 units.append({
                     'id': abbr,

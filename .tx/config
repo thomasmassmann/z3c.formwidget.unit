@@ -1,0 +1,8 @@
+[z3cformwidgetunit.z3cformwidgetunit]
+file_filter = src/z3c/formwidget/unit/locales/<lang>/LC_MESSAGES/z3c.formwidget.unit.po
+source_file = src/z3c/formwidget/unit/locales/z3c.formwidget.unit.pot
+source_lang = en
+
+
+[main]
+host = https://www.transifex.com
