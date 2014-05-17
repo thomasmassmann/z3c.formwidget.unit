@@ -45,12 +45,13 @@ setup(
             'js.bootstrap_select',
         ],
         test=[
+            'unittest2',
             'z3c.form [test]',
+            'zc.buildout',
             'zope.browserpage',
             'zope.publisher',
             'zope.testing',
             'zope.traversing',
-            'zc.buildout',
         ],
     ),
     install_requires=[
