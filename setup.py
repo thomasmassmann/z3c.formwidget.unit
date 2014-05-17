@@ -40,11 +40,19 @@ setup(
     namespace_packages=['z3c', 'z3c.formwidget'],
     zip_safe=False,
     include_package_data=True,
-    extras_require={
-        'fanstatic': [
+    extras_require=dict(
+        fanstatic=[
             'js.bootstrap_select',
-        ]
-    },
+        ],
+        test=[
+            'z3c.form',
+            'zope.browserpage',
+            'zope.publisher',
+            'zope.testing',
+            'zope.traversing',
+            'zc.buildout',
+        ],
+    ),
     install_requires=[
         'setuptools',
         'pint',
