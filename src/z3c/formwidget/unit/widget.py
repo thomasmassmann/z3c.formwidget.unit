@@ -92,6 +92,11 @@ jQuery(function(jq){
             system = None
             if not self.ignoreContext:
                 system = self._get_unit_annotation()
+            else:
+                if self.unit in interfaces.METRICS:
+                    system = interfaces.SYSTEM_METRIC
+                elif self.unit in interfaces.IMPERIALS:
+                    system = interfaces.SYSTEM_IMPERIAL
             if not system in self.unit_systems:
                 system = self.preferred_system
             self.unit = utils.get_best_unit(
