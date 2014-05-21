@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # python imports
+from decimal import Decimal
 from pint import UndefinedUnitError
 import string
 
@@ -103,6 +104,8 @@ jQuery(function(jq){
             unit = getattr(ureg, self.unit)
             value = value * base_unit
             value = value.to(unit).magnitude
+            if isinstance(value, Decimal):
+                value = value.quantize(interfaces.TWOPLACES)
             value = converter.toWidgetValue(value)
         return value
 

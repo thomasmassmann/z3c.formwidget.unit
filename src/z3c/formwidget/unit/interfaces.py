@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 
+# python imports
+from decimal import Decimal
+
 # zope imports
 from z3c.form.interfaces import ITextWidget
 
 # local imports
 from z3c.formwidget.unit.i18n import _
 
+
+TWOPLACES = Decimal(10) ** -2
 
 SYSTEM_METRIC = 'metric'
 SYSTEM_IMPERIAL = 'imperial'
