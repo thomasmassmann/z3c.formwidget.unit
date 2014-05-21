@@ -41,6 +41,22 @@ LABELS = {
     SYSTEM_IMPERIAL: _(u'Imperial'),
 }
 
+ALL_UNITS = [
+    UNIT_ACRE,
+    UNIT_FT,
+    UNIT_HA,
+    UNIT_IN,
+    UNIT_KM,
+    UNIT_M,
+    UNIT_MI,
+    UNIT_MM,
+    UNIT_SQFT,
+    UNIT_SQKM,
+    UNIT_SQM,
+    UNIT_SQMI,
+    UNIT_YD,
+]
+
 UNITS = {
     SYSTEM_METRIC: {
         DIMENSION_AREA: [

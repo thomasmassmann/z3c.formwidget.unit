@@ -211,6 +211,11 @@ jQuery(function(jq){
 
         return items
 
+    def unit_label(self):
+        unit = [unit for unit in interfaces.ALL_UNITS if unit[0] == self.unit]
+        unit = unit and unit.pop() or interfaces.UNIT_NONE
+        return unit[1]
+
 
 class AreaWidget(MultiUnitWidget):
     """Unit widget for 'area' dimensions."""

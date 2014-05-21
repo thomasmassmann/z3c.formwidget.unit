@@ -17,6 +17,6 @@
                           onkeypress view/onkeypress;
                           onkeydown view/onkeydown;
                           onkeyup view/onkeyup"><tal:block
-          condition="view/value" content="view/value"
-    /></span>
+          condition="view/value" content="view/widget_value"
+    /></span> <span tal:content="view/unit_label"></span>
 </html>
