@@ -12,7 +12,7 @@ def get_best_unit(value, system, dimension, level_min=0, level_max=None):
         level = 0
         if value < 1000:
             level = 0
-        elif value < 1000000:
+        elif value < 4000000:
             level = 1
         else:
             level = 2
