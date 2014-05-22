@@ -1,8 +1,10 @@
 CHANGES
 *******
 
-0.3 (unreleased)
-================
+0.2.1 (2014-05-22)
+==================
+
+- Append select picker to body element (fixes some layout issues).
 
 
 0.2 (2014-05-21)
