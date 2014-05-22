@@ -33,6 +33,7 @@
                         maxlength view/maxlength"
         />
     <select class="selectpicker show-tick" id="" title=""
+        data-container="body"
         data-header=""
         data-width="auto"
         tal:attributes="data-header view/data_header | nothing;
