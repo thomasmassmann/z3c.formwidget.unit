@@ -54,7 +54,7 @@ If we render the widget we get the input element with the select box and some JS
     >>> print(widget.render())  # doctest:+ELLIPSIS
     <div class="input-append">
         <input id="widget-id" name="widget.name" class="area-widget unit-widget" type="text" />
-        <select class="selectpicker show-tick" id="widget-id-unit" title="" data-header="Select a unit" data-width="75px" name="widget.name-unit">
+        <select class="selectpicker show-tick" id="widget-id-unit" title="" data-container="body" data-header="Select a unit" data-width="75px" name="widget.name-unit">
         ...
         </select>
     </div>
@@ -123,7 +123,7 @@ If we render the widget we get the input element with the select box and some JS
     >>> print(widget.render())  # doctest:+ELLIPSIS
     <div class="input-append">
         <input id="widget-id" name="widget.name" class="length-widget unit-widget" type="text" />
-        <select class="selectpicker show-tick" id="widget-id-unit" title="" data-header="Select a unit" data-width="75px" name="widget.name-unit">
+        <select class="selectpicker show-tick" id="widget-id-unit" title="" data-container="body" data-header="Select a unit" data-width="75px" name="widget.name-unit">
         ...
         </select>
     </div>
