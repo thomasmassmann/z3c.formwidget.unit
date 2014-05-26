@@ -1,8 +1,10 @@
 CHANGES
 *******
 
-0.3 (unreleased)
-================
+0.2.2 (2014-05-26)
+==================
+
+- Don't fail when we can't store annotations.
 
 
 0.2.1 (2014-05-22)
