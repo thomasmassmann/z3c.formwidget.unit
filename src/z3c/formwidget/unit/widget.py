@@ -152,20 +152,28 @@ jQuery(function(jq){
         context = self.context
         if isinstance(context, Proxy):
             context = removeSecurityProxy(context)
-        annotations = IAnnotations(context)
-        storage = annotations.get(KEY, {})
-        return storage.get(self.name)
+        try:
+            annotations = IAnnotations(context)
+        except:
+            return None
+        else:
+            storage = annotations.get(KEY, {})
+            return storage.get(self.name)
 
     def _set_unit_annotation(self, unit):
         context = self.context
         if isinstance(context, Proxy):
             context = removeSecurityProxy(context)
-        annotations = IAnnotations(context)
-        storage = annotations.get(KEY)
-        if storage is None:
-            storage = annotations[KEY] = PersistentDict({})
-        # Store the unit system
-        storage[self.name] = utils.system_for_unit(unit)
+        try:
+            annotations = IAnnotations(context)
+        except:
+            return None
+        else:
+            storage = annotations.get(KEY)
+            if storage is None:
+                storage = annotations[KEY] = PersistentDict({})
+            # Store the unit system
+            storage[self.name] = utils.system_for_unit(unit)
 
     def javascript_input(self):
         return string.Template(self._javascript_input).substitute(dict(
