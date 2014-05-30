@@ -30,7 +30,7 @@ def get_best_unit(value, system, dimension, level_min=0, level_max=None):
         level = min(level_max, level)
     unit = interfaces.UNITS.get(
         system,
-        {}).get(dimension, [(None,)])[level][0]
+        {}).get(dimension, [(None,)])[level]
     return unit
 
 

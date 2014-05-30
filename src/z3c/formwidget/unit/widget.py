@@ -105,7 +105,7 @@ jQuery(function(jq){
                 self.unit_dimension,
                 level_min=self.level_min,
                 level_max=self.level_max,
-            )
+            )[0]
             unit = getattr(ureg, self.unit)
             value = value * base_unit
             value = value.to(unit).magnitude
