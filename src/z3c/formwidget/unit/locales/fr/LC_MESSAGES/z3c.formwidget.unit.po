@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the z3c.formwidget.unit project.
 # 
 # Translators:
+# Thomas Massmann <thomas.massmann@it-spir.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: z3c.formwidget.unit\n"
 "Report-Msgid-Bugs-To: thomas.massmann@it-spir.it\n"
 "POT-Creation-Date: 2014-05-17 09:47+0200\n"
-"PO-Revision-Date: 2014-05-17 07:53+0000\n"
+"PO-Revision-Date: 2014-06-02 10:25+0000\n"
 "Last-Translator: Thomas Massmann <thomas.massmann@it-spir.it>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/z3cformwidgetunit/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -20,100 +21,100 @@ msgstr ""
 
 #: src/z3c/formwidget/unit/interfaces.py:19
 msgid "millimeter"
-msgstr ""
+msgstr "millimètre"
 
 #: src/z3c/formwidget/unit/interfaces.py:19
 msgid "0.001 meter"
-msgstr ""
+msgstr "0,001 mètre"
 
 #: src/z3c/formwidget/unit/interfaces.py:20
 msgid "meter"
-msgstr ""
+msgstr "mètre"
 
 #: src/z3c/formwidget/unit/interfaces.py:21
 msgid "kilometer"
-msgstr ""
+msgstr "kilomètre"
 
 #: src/z3c/formwidget/unit/interfaces.py:21
 msgid "1,000 meter"
-msgstr ""
+msgstr "1 000 mètre"
 
 #: src/z3c/formwidget/unit/interfaces.py:24
 msgid "square meter"
-msgstr ""
+msgstr "mètres carrés"
 
 #: src/z3c/formwidget/unit/interfaces.py:25
 msgid "hectare"
-msgstr ""
+msgstr "hectare"
 
 #: src/z3c/formwidget/unit/interfaces.py:25
 msgid "10,000 square meter"
-msgstr ""
+msgstr "10 000 mètres carrés"
 
 #: src/z3c/formwidget/unit/interfaces.py:26
 msgid "square kilometer"
-msgstr ""
+msgstr "kilomètre carré"
 
 #: src/z3c/formwidget/unit/interfaces.py:26
 msgid "100 hectare"
-msgstr ""
+msgstr "100 hectare"
 
 #: src/z3c/formwidget/unit/interfaces.py:29
 msgid "inch"
-msgstr ""
+msgstr "pouce"
 
 #: src/z3c/formwidget/unit/interfaces.py:29
 msgid "1/12 foot"
-msgstr ""
+msgstr "1/12 pied"
 
 #: src/z3c/formwidget/unit/interfaces.py:30
 msgid "foot"
-msgstr ""
+msgstr "pied"
 
 #: src/z3c/formwidget/unit/interfaces.py:31
 msgid "yard"
-msgstr ""
+msgstr "yard"
 
 #: src/z3c/formwidget/unit/interfaces.py:31
 msgid "3 feet"
-msgstr ""
+msgstr "3 pieds"
 
 #: src/z3c/formwidget/unit/interfaces.py:32
 msgid "mile"
-msgstr ""
+msgstr "mile"
 
 #: src/z3c/formwidget/unit/interfaces.py:32
 msgid "1,760 yards"
-msgstr ""
+msgstr "1 760 yards"
 
 #: src/z3c/formwidget/unit/interfaces.py:35
 msgid "square feet"
-msgstr ""
+msgstr "pieds carrés"
 
 #: src/z3c/formwidget/unit/interfaces.py:36
 msgid "acre"
-msgstr ""
+msgstr "acre"
 
 #: src/z3c/formwidget/unit/interfaces.py:36
 msgid "43,560 square feet"
-msgstr ""
+msgstr "43 560 pieds carrés"
 
 #: src/z3c/formwidget/unit/interfaces.py:37
 msgid "square mile"
-msgstr ""
+msgstr "mile carré"
 
 #: src/z3c/formwidget/unit/interfaces.py:37
 msgid "640 acres"
-msgstr ""
+msgstr "640 acre"
 
 #: src/z3c/formwidget/unit/interfaces.py:40
 msgid "Metric"
-msgstr ""
+msgstr "Métrique"
 
 #: src/z3c/formwidget/unit/interfaces.py:41
 msgid "Imperial"
-msgstr ""
+msgstr "Impériale"
 
 #: src/z3c/formwidget/unit/widget.py:57
 msgid "Select a unit"
-msgstr ""
+msgstr "Sélectionnez une unité"

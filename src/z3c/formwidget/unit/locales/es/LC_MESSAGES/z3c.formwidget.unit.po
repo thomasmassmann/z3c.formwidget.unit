@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the z3c.formwidget.unit project.
 # 
 # Translators:
+# Thomas Massmann <thomas.massmann@it-spir.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: z3c.formwidget.unit\n"
 "Report-Msgid-Bugs-To: thomas.massmann@it-spir.it\n"
 "POT-Creation-Date: 2014-05-17 09:47+0200\n"
-"PO-Revision-Date: 2014-05-17 07:53+0000\n"
+"PO-Revision-Date: 2014-06-02 10:27+0000\n"
 "Last-Translator: Thomas Massmann <thomas.massmann@it-spir.it>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/z3cformwidgetunit/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +41,7 @@ msgstr ""
 
 #: src/z3c/formwidget/unit/interfaces.py:24
 msgid "square meter"
-msgstr ""
+msgstr "metros cuadrados"
 
 #: src/z3c/formwidget/unit/interfaces.py:25
 msgid "hectare"
@@ -88,7 +89,7 @@ msgstr ""
 
 #: src/z3c/formwidget/unit/interfaces.py:35
 msgid "square feet"
-msgstr ""
+msgstr "pies cuadrados"
 
 #: src/z3c/formwidget/unit/interfaces.py:36
 msgid "acre"
