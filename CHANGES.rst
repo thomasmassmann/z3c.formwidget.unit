@@ -1,8 +1,10 @@
 CHANGES
 *******
 
-0.3 (unreleased)
-================
+0.2.3 (2014-06-02)
+==================
+
+- Return the unit tuple so we can better access some properties of it.
 
 
 0.2.2 (2014-05-26)
